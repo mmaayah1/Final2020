@@ -26,10 +26,122 @@ A new  preventative vaccine (covid91) is under test in clinical trials. Given th
 
 # Results
 
+# Females 
+
+```{r}
+dataF=filter(FinalData,sex=='gal')
+```
+
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
+```{r}
+barchartGC(~infected + treatment,data=dataF)
+barchartGC(~infected + treatment,data=dataF, type="percent")
 
+```
+The women who got the vaccine are less likely to get Covid-19 than women who got the placebo.
 
-# Discussion and Conclusion
+```{r}
+table1 <- xtabs(~infected + treatment,data=dataF)
+rowPerc(table1)
+colPerc(table1)
+```
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+The odds ratio of acquiring Covid-19 is if you have the vaccine is 0.5 to 1 the women who got the vaccine are less likely to get Covid-19 than women who got the placebo, because the 95% in confidence interval is less than 1 we have evidence that the vaccine is effective. 
+
+# Males
+  
+```{r}
+dataM=filter(FinalData,sex=='guy')
+```
+
+<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+
+```{r}
+barchartGC(~infected + treatment,data=dataM)
+barchartGC(~infected + treatment,data=dataM, type="percent")
+
+```
+
+This means that males who got the vaccine were more likely to get Covid-19 than males who got the placebo.
+
+```{r}
+table1 <- xtabs(~infected + treatment,data=dataM)
+rowPerc(table1)
+colPerc(table1)
+```
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+The odds ratio is 1.5 to 1 and that means that males who got the vaccine were 1.5 times more likely to get Covid-19 than males who got the placebo, the 95% confidence interval is more than 1 so we know that the result is significant. 
+
+#  LGBTQ  
+
+```{r}
+dataQ=filter(FinalData,LGBTQ=='gay')
+```
+
+<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+
+```{r}
+barchartGC(~infected + treatment,data=dataQ)
+barchartGC(~infected + treatment,data=dataQ, type="percent")
+
+```
+
+That people who got the vaccine were more likely to get Covid-19 than people who got the placebo. 
+
+```{r}
+table1 <- xtabs(~infected + treatment,data=dataQ)
+rowPerc(table1)
+colPerc(table1)
+```
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+The odds ratio is 2.5 to 1 and that means that gay people who got the vaccine were 2.5 times more likely to get Covid-19 than gay people who got the placebo, the 95% confidence interval is more than 1 so we know that the results that came out were important to be worthy of attention in another words sufficiently great which means the vaccine wasn't effective. 
+
+# Drugusers
+```{r}
+dataD=filter(FinalData,DrugUser=='yes')
+```
+
+<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+
+```{r}
+barchartGC(~infected + treatment,data=dataD)
+barchartGC(~infected + treatment,data=dataD, type="percent")
+
+```
+
+The people who got the vaccine are less likely to get Covid-19 than the people who got the placebo.
+
+```{r}
+table1 <- xtabs(~infected + treatment,data=dataD)
+rowPerc(table1)
+colPerc(table1)
+```
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+The odds ratio of acquiring Covid-19 is if you have the vaccine is 0.5 to 1 the DrugUser who got the vaccine are less likely to get Covid-19 than DrugUser who got the placebo, because the 95% in confidence interval is less than 1 we have evidence that the vaccine is effective. 
+
+# Discussion and Conclusion  
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+In conclusion, the vaccination was only effective for women and drug users since the odd ratio for each of these two categories was 0.5 to 1, which is less than one in other words, and there was evidence that the drug was effective for only these two, it revealed that women and drug users who took the vaccine became less likely to develop Covid-19 in the percentage bar. But if you were a man or a gay person and you were taking the vaccine, you would be more likely than the people who took the placebo to get Covid-19, which indicates that the vaccine was not successful.
